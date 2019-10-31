@@ -1,7 +1,2 @@
-javac ./transitlines/TransitLine.java
-javac ./disasters/Disasters.java
-javac ./maps/Map.java
-javac ./gui/MainGameGui.java
-javac ./gui/Gui.java
-javac TransitGame.java
-java TransitGame
+javac -d classes ./src/*.java ./src/*/*.java
+java -classpath classes TransitGame "$@"

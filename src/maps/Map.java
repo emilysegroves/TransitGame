@@ -3,7 +3,17 @@ import transitlines.*;
 import disasters.*;
 
 enum Terrain{
-    GRASS, ROCK, RIVER, OCEAN, FOREST, DESERT, INDUSTRIAL, HOME, SHOPPING, FARM, DOWNTOWN;
+    GRASS,
+    ROCK,
+    RIVER,
+    OCEAN,
+    FOREST,
+    DESERT,
+    INDUSTRIAL,
+    HOME,
+    SHOPPING,
+    FARM,
+    DOWNTOWN;
 }
 
 public class Map{
@@ -19,6 +29,32 @@ public class Map{
     Terrain terrainArray[][] = new Terrain[10][10];//array keeps track of terrain placement.
     TransitLine[][] transitArray = new TransitLine[10][10];//array keeps track of transitline placement.
     Disasters[][] disastersArray = new Disasters[10][10];//Array keeps track of where disasters occur.
+
+
+    ///// CONSTANTS ///////////////////////////////////////////////////////////
+
+    public static final String GRASS = "[GRASS]";
+    public static final String ROCKS = "[ROCKS]";
+    public static final String RIVER = "[RIVER]";
+    public static final String OCEAN = "[OCEAN]";
+    public static final String FOREST = "[FORST]";
+    public static final String DESERT = "[DESRT]";
+    public static final String ROAD = "[ROADS]";
+    public static final String BIKEPATH = "[BKPTH]";
+    public static final String GASTRAIN = "[GSTRN]";
+    public static final String ELECTRICTRAIN = "[ELTRN]";
+    public static final String ORBITALTRAIN = "[ORTRN]";
+    public static final String FLOOD = "[FLOOD]";
+    public static final String HURRICANE = "[HURRI]";
+    public static final String FIRE = "[FIRES]";
+    public static final String TORNADO = "[TRNDO]";
+    public static final String FARM = "[FAARM]";
+    public static final String INDUSTRY = "[INDUS]";
+    public static final String DOWNTOWN = "[DOWNT]";
+    public static final String HOME = "[HOOME]";
+    public static final String SHOP = "[SHOPP]";
+    public static final String NULL = "[NULL]";
+
 
     public Map(){//constructor for map.
 
@@ -143,22 +179,22 @@ public class Map{
         for(int t = 0; t < tile.length; t++){ //Updates tile[][] with terrainArray[][]
             for(int i= 0; i < tile.length; i++){
                 if (terrainArray[t][i] == Terrain.GRASS){
-                    tile[t][i] = "[GRASS]";
+                    tile[t][i] = GRASS;
                 }
                 if (terrainArray[t][i] == Terrain.ROCK){
-                    tile[t][i] = "[ROCKS]";
+                    tile[t][i] = ROCKS;
                 }
                 if (terrainArray[t][i] == Terrain.RIVER){
-                    tile[t][i] = "[RIVER]";
+                    tile[t][i] = RIVER;
                 }
                 if (terrainArray[t][i] == Terrain.OCEAN){
-                    tile[t][i] = "[OCEAN]";
+                    tile[t][i] = OCEAN;
                 }
                 if (terrainArray[t][i] == Terrain.FOREST){
-                    tile[t][i] = "[FORST]";
+                    tile[t][i] = FOREST;
                 }
                 if (terrainArray[t][i] == Terrain.DESERT){
-                    tile[t][i] = "[DESRT]";
+                    tile[t][i] = DESERT;
                 }
             }
         }
@@ -166,19 +202,19 @@ public class Map{
         for(int t = 0; t < tile.length; t++){//Updates tile[][] with transitArray[][]
             for(int i= 0; i < tile.length; i++){
                 if (transitArray[t][i] == TransitLine.ROAD){
-                    tile[t][i] = "[ROADS]";
+                    tile[t][i] = ROAD;
                 }
                 if (transitArray[t][i] == TransitLine.BIKEPATH){
-                    tile[t][i] = "[BKPTH]";
+                    tile[t][i] = BIKEPATH;
                 }
                 if (transitArray[t][i] == TransitLine.GASTRAIN){
-                    tile[t][i] = "[GSTRN]";
+                    tile[t][i] = GASTRAIN;
                 }
                 if (transitArray[t][i] == TransitLine.ELECTRICTRAIN){
-                    tile[t][i] = "[ELTRN]";
+                    tile[t][i] = ELECTRICTRAIN;
                 }
                 if (transitArray[t][i] == TransitLine.ORBITALTRAIN){
-                    tile[t][i] = "[ORTRN]";
+                    tile[t][i] = ORBITALTRAIN;
                 }
             }
         }
@@ -186,16 +222,16 @@ public class Map{
       for(int x = 0; x < tile.length; x++){//updates tile with disastersArray.
           for(int y = 0; y < tile.length; y++){
               if(disastersArray[x][y] == Disasters.FLOODING){
-                  tile[x][y] = "[FLOOD]";
+                  tile[x][y] = FLOOD;
               }
               if(disastersArray[x][y] == Disasters.HURRICANES){
-                  tile[x][y] = "[HURRI]";
+                  tile[x][y] = HURRICANE;
               }
               if(disastersArray[x][y] == Disasters.FIRES){
-                  tile[x][y] = "[FIRES]";
+                  tile[x][y] = FIRE;
               }
               if(disastersArray[x][y] == Disasters.TORNADOES){
-                  tile[x][y] = "[TRNDO]";
+                  tile[x][y] = TORNADO;
               }
           }
       }
@@ -203,19 +239,19 @@ public class Map{
       for(int t = 0; t < tile.length; t++){ //Updates tile[][] with terrainArray for city hubs.
           for(int i= 0; i < tile.length; i++){
               if (terrainArray[t][i] == Terrain.FARM){
-                  tile[t][i] = "[FAARM]";
+                  tile[t][i] = FARM;
               }
               if (terrainArray[t][i] == Terrain.INDUSTRIAL){
-                  tile[t][i] = "[INDUS]";
+                  tile[t][i] = INDUSTRY;
               }
               if (terrainArray[t][i] == Terrain.DOWNTOWN){
-                  tile[t][i] = "[DOWNT]";
+                  tile[t][i] = DOWNTOWN;
               }
               if (terrainArray[t][i] == Terrain.HOME){
-                  tile[t][i] = "[HOOME]";
+                  tile[t][i] = HOME;
               }
               if (terrainArray[t][i] == Terrain.SHOPPING){
-                  tile[t][i] = "[SHOPP]";
+                  tile[t][i] = SHOP;
               }
           }
       }
@@ -282,59 +318,59 @@ public class Map{
         int valueCounter = 0;
         int connectionCounter = 0;
 
-        connectionCounter = HubConnectedCounter("[HOOME]", "[ROADS]", "[DOWNT]", "[SHOPP]", "[INDUS]", "[FAARM]");
+        connectionCounter = HubConnectedCounter(HOME, ROAD, DOWNTOWN, SHOP, INDUSTRY, FARM);
         valueCounter = valueCounter + (connectionCounter * TransitLine.ROAD.value);
-        connectionCounter = HubConnectedCounter("[HOOME]", "[GSTRN]", "[DOWNT]", "[SHOPP]", "[INDUS]", "[FAARM]");
+        connectionCounter = HubConnectedCounter(HOME, GASTRAIN, DOWNTOWN, SHOP, INDUSTRY, FARM);
         valueCounter = valueCounter + (connectionCounter * TransitLine.GASTRAIN.value);
-        connectionCounter = HubConnectedCounter("[HOOME]", "[ELTRN]", "[DOWNT]", "[SHOPP]", "[INDUS]", "[FAARM]");
+        connectionCounter = HubConnectedCounter(HOME, ELECTRICTRAIN, DOWNTOWN, SHOP, INDUSTRY, FARM);
         valueCounter = valueCounter + (connectionCounter * TransitLine.ELECTRICTRAIN.value);
-        connectionCounter = HubConnectedCounter("[HOOME]", "[ORTRN]", "[DOWNT]", "[SHOPP]", "[INDUS]", "[FAARM]");
+        connectionCounter = HubConnectedCounter(HOME, ORBITALTRAIN, DOWNTOWN, SHOP, INDUSTRY, FARM);
         valueCounter = valueCounter + (connectionCounter * TransitLine.ORBITALTRAIN.value);
-        connectionCounter = HubConnectedCounter("[HOOME]", "[BKPTH]", "[DOWNT]", "[SHOPP]", "[INDUS]", "[FAARM]");
+        connectionCounter = HubConnectedCounter(HOME, BIKEPATH, DOWNTOWN, SHOP, INDUSTRY, FARM);
         valueCounter = valueCounter + (connectionCounter * TransitLine.BIKEPATH.value);
 
-        connectionCounter = HubConnectedCounter("[DOWNT]", "[ROADS]", "[HOOME]", "[SHOPP]", "[INDUS]", "[FAARM]");
+        connectionCounter = HubConnectedCounter(DOWNTOWN, ROAD, HOME, SHOP, INDUSTRY, FARM);
         valueCounter = valueCounter + (connectionCounter * TransitLine.ROAD.value);
-        connectionCounter = HubConnectedCounter("[DOWNT]", "[GSTRN]", "[HOOME]", "[SHOPP]", "[INDUS]", "[FAARM]");
+        connectionCounter = HubConnectedCounter(DOWNTOWN, GASTRAIN, HOME, SHOP, INDUSTRY, FARM);
         valueCounter = valueCounter + (connectionCounter * TransitLine.GASTRAIN.value);
-        connectionCounter = HubConnectedCounter("[DOWNT]", "[ELTRN]", "[HOOME]", "[SHOPP]", "[INDUS]", "[FAARM]");
+        connectionCounter = HubConnectedCounter(DOWNTOWN, ELECTRICTRAIN, HOME, SHOP, INDUSTRY, FARM);
         valueCounter = valueCounter + (connectionCounter * TransitLine.ELECTRICTRAIN.value);
-        connectionCounter = HubConnectedCounter("[DOWNT]", "[ORTRN]", "[HOOME]", "[SHOPP]", "[INDUS]", "[FAARM]");
+        connectionCounter = HubConnectedCounter(DOWNTOWN, ORBITALTRAIN, HOME, SHOP, INDUSTRY, FARM);
         valueCounter = valueCounter + (connectionCounter * TransitLine.ORBITALTRAIN.value);
-        connectionCounter = HubConnectedCounter("[DOWNT]", "[BKPTH]", "[HOOME]", "[SHOPP]", "[INDUS]", "[FAARM]");
+        connectionCounter = HubConnectedCounter(DOWNTOWN, BIKEPATH, HOME, SHOP, INDUSTRY, FARM);
         valueCounter = valueCounter + (connectionCounter * TransitLine.BIKEPATH.value);
 
-        connectionCounter = HubConnectedCounter("[SHOPP]", "[ROADS]", "[DOWNT]", "[HOOME]", "[INDUS]", "[FAARM]");
+        connectionCounter = HubConnectedCounter(SHOP, ROAD, DOWNTOWN, HOME, INDUSTRY, FARM);
         valueCounter = valueCounter + (connectionCounter * TransitLine.ROAD.value);
-        connectionCounter = HubConnectedCounter("[SHOPP]", "[GSTRN]", "[DOWNT]", "[HOOME]", "[INDUS]", "[FAARM]");
+        connectionCounter = HubConnectedCounter(SHOP, GASTRAIN, DOWNTOWN, HOME, INDUSTRY, FARM);
         valueCounter = valueCounter + (connectionCounter * TransitLine.GASTRAIN.value);
-        connectionCounter = HubConnectedCounter("[SHOPP]", "[ELTRN]", "[DOWNT]", "[HOOME]", "[INDUS]", "[FAARM]");
+        connectionCounter = HubConnectedCounter(SHOP, ELECTRICTRAIN, DOWNTOWN, HOME, INDUSTRY, FARM);
         valueCounter = valueCounter + (connectionCounter * TransitLine.ELECTRICTRAIN.value);
-        connectionCounter = HubConnectedCounter("[SHOPP]", "[ORTRN]", "[DOWNT]", "[HOOME]", "[INDUS]", "[FAARM]");
+        connectionCounter = HubConnectedCounter(SHOP, ORBITALTRAIN, DOWNTOWN, HOME, INDUSTRY, FARM);
         valueCounter = valueCounter + (connectionCounter * TransitLine.ORBITALTRAIN.value);
-        connectionCounter = HubConnectedCounter("[SHOPP]", "[BKPTH]", "[DOWNT]", "[HOOME]", "[INDUS]", "[FAARM]");
+        connectionCounter = HubConnectedCounter(SHOP, BIKEPATH, DOWNTOWN, HOME, INDUSTRY, FARM);
         valueCounter = valueCounter + (connectionCounter * TransitLine.BIKEPATH.value);
 
-        connectionCounter = HubConnectedCounter("[INDUS]", "[ROADS]", "[DOWNT]", "[SHOPP]", "[HOOME]", "[FAARM]");
+        connectionCounter = HubConnectedCounter(INDUSTRY, ROAD, DOWNTOWN, SHOP, HOME, FARM);
         connectionCounter = (connectionCounter * TransitLine.ROAD.value);
-        connectionCounter = HubConnectedCounter("[INDUS]", "[GSTRN]", "[DOWNT]", "[SHOPP]", "[HOOME]", "[FAARM]");
+        connectionCounter = HubConnectedCounter(INDUSTRY, GASTRAIN, DOWNTOWN, SHOP, HOME, FARM);
         valueCounter = valueCounter + (connectionCounter * TransitLine.GASTRAIN.value);
-        connectionCounter = HubConnectedCounter("[INDUS]", "[ELTRN]", "[DOWNT]", "[SHOPP]", "[HOOME]", "[FAARM]");
+        connectionCounter = HubConnectedCounter(INDUSTRY, ELECTRICTRAIN, DOWNTOWN, SHOP, HOME, FARM);
         valueCounter = valueCounter + (connectionCounter * TransitLine.ELECTRICTRAIN.value);
-        connectionCounter = HubConnectedCounter("[INDUS]", "[ORTRN]", "[DOWNT]", "[SHOPP]", "[HOOME]", "[FAARM]");
+        connectionCounter = HubConnectedCounter(INDUSTRY, ORBITALTRAIN, DOWNTOWN, SHOP, HOME, FARM);
         valueCounter = valueCounter + (connectionCounter * TransitLine.ORBITALTRAIN.value);
-        connectionCounter = HubConnectedCounter("[INDUS]", "[BKPTH]", "[DOWNT]", "[SHOPP]", "[HOOME]", "[FAARM]");
+        connectionCounter = HubConnectedCounter(INDUSTRY, BIKEPATH, DOWNTOWN, SHOP, HOME, FARM);
         valueCounter = valueCounter + (connectionCounter * TransitLine.BIKEPATH.value);
 
-        connectionCounter = HubConnectedCounter("[FAARM]", "[ROADS]", "[DOWNT]", "[SHOPP]", "[INDUS]", "[HOOME]");
+        connectionCounter = HubConnectedCounter(FARM, ROAD, DOWNTOWN, SHOP, INDUSTRY, HOME);
         valueCounter = valueCounter + (connectionCounter * TransitLine.ROAD.value);
-        connectionCounter = HubConnectedCounter("[FAARM]", "[GSTRN]", "[DOWNT]", "[SHOPP]", "[INDUS]", "[HOOME]");
+        connectionCounter = HubConnectedCounter(FARM, GASTRAIN, DOWNTOWN, SHOP, INDUSTRY, HOME);
         valueCounter = valueCounter + (connectionCounter * TransitLine.GASTRAIN.value);
-        connectionCounter = HubConnectedCounter("[FAARM]", "[ELTRN]", "[DOWNT]", "[SHOPP]", "[INDUS]", "[HOOME]");
+        connectionCounter = HubConnectedCounter(FARM, ELECTRICTRAIN, DOWNTOWN, SHOP, INDUSTRY, HOME);
         valueCounter = valueCounter + (connectionCounter * TransitLine.ELECTRICTRAIN.value);
-        connectionCounter = HubConnectedCounter("[FAARM]", "[ORTRN]", "[DOWNT]", "[SHOPP]", "[INDUS]", "[HOOME]");
+        connectionCounter = HubConnectedCounter(FARM, ORBITALTRAIN, DOWNTOWN, SHOP, INDUSTRY, HOME);
         valueCounter = valueCounter + (connectionCounter * TransitLine.ORBITALTRAIN.value);
-        connectionCounter = HubConnectedCounter("[FAARM]", "[BKPTH]", "[DOWNT]", "[SHOPP]", "[INDUS]", "[HOOME]");
+        connectionCounter = HubConnectedCounter(FARM, BIKEPATH, DOWNTOWN, SHOP, INDUSTRY, HOME);
         valueCounter = valueCounter + (connectionCounter * TransitLine.BIKEPATH.value);
 
         valueCounter = valueCounter/2;
@@ -343,7 +379,7 @@ public class Map{
 
         for(int a = 0; a < tile.length; a++){
             for(int b = 0; b < tile.length; b++){
-                if(tile[a][b] == "[DESRT]"){
+                if(tile[a][b] == DESERT){
                     desertsubtract = desertsubtract + 0.5;
                 }
             }
@@ -1225,342 +1261,342 @@ public class Map{
         boolean IndustrialToDowntown = false;
 
         //Checks to see if home is immediately connected to downtown
-        if(isHubConnected("[HOOME]", "[ROADS]", "[DOWNT]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(HOME, ROAD, DOWNTOWN, NULL, NULL, NULL)){
             HomeToDowntown = true;
         }
-        if(isHubConnected("[HOOME]", "[ELTRN]", "[DOWNT]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(HOME, ELECTRICTRAIN, DOWNTOWN, NULL, NULL, NULL)){
             HomeToDowntown = true;
         }
-        if(isHubConnected("[HOOME]", "[GSTRN]", "[DOWNT]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(HOME, GASTRAIN, DOWNTOWN, NULL, NULL, NULL)){
             HomeToDowntown = true;
         }
-        if(isHubConnected("[HOOME]", "[ORTRN]", "[DOWNT]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(HOME, ORBITALTRAIN, DOWNTOWN, NULL, NULL, NULL)){
             HomeToDowntown = true;
         }
-        if(isHubConnected("[HOOME]", "[BKPTH]", "[DOWNT]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(HOME, BIKEPATH, DOWNTOWN, NULL, NULL, NULL)){
             HomeToDowntown = true;
         }
 
         //Checks to see if home is immediately connected to shopping.
-        if(isHubConnected("[HOOME]", "[ROADS]", "[SHOPP]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(HOME, ROAD, SHOP, NULL, NULL, NULL)){
             HomeToShopping = true;
         }
-        if(isHubConnected("[HOOME]", "[ELTRN]", "[SHOPP]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(HOME, ELECTRICTRAIN, SHOP, NULL, NULL, NULL)){
             HomeToShopping = true;
         }
-        if(isHubConnected("[HOOME]", "[GSTRN]", "[SHOPP]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(HOME, GASTRAIN, SHOP, NULL, NULL, NULL)){
             HomeToShopping = true;
         }
-        if(isHubConnected("[HOOME]", "[ORTRN]", "[SHOPP]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(HOME, ORBITALTRAIN, SHOP, NULL, NULL, NULL)){
             HomeToShopping = true;
         }
-        if(isHubConnected("[HOOME]", "[BKPTH]", "[SHOPP]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(HOME, BIKEPATH, SHOP, NULL, NULL, NULL)){
             HomeToShopping = true;
         }
 
         //Checks ot see if home is immediately connected to farm.
-        if(isHubConnected("[HOOME]", "[ROADS]", "[FAARM]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(HOME, ROAD, FARM, NULL, NULL, NULL)){
             HomeToFarm = true;
         }
-        if(isHubConnected("[HOOME]", "[ELTRN]", "[FAARM]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(HOME, ELECTRICTRAIN, FARM, NULL, NULL, NULL)){
             HomeToFarm = true;
         }
-        if(isHubConnected("[HOOME]", "[GSTRN]", "[FAARM]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(HOME, GASTRAIN, FARM, NULL, NULL, NULL)){
             HomeToFarm = true;
         }
-        if(isHubConnected("[HOOME]", "[ORTRN]", "[FAARM]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(HOME, ORBITALTRAIN, FARM, NULL, NULL, NULL)){
             HomeToFarm = true;
         }
-        if(isHubConnected("[HOOME]", "[BKPTH]", "[FAARM]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(HOME, BIKEPATH, FARM, NULL, NULL, NULL)){
             HomeToFarm = true;
         }
 
         //Checks to see if home is immediately connected to industry.
-        if(isHubConnected("[HOOME]", "[ROADS]", "[INDUS]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(HOME, ROAD, INDUSTRY, NULL, NULL, NULL)){
             HomeToIndustrial = true;
         }
-        if(isHubConnected("[HOOME]", "[ELTRN]", "[INDUS]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(HOME, ELECTRICTRAIN, INDUSTRY, NULL, NULL, NULL)){
             HomeToIndustrial = true;
         }
-        if(isHubConnected("[HOOME]", "[GSTRN]", "[INDUS]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(HOME, GASTRAIN, INDUSTRY, NULL, NULL, NULL)){
             HomeToIndustrial = true;
         }
-        if(isHubConnected("[HOOME]", "[ORTRN]", "[INDUS]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(HOME, ORBITALTRAIN, INDUSTRY, NULL, NULL, NULL)){
             HomeToIndustrial = true;
         }
-        if(isHubConnected("[HOOME]", "[BKPTH]", "[INDUS]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(HOME, BIKEPATH, INDUSTRY, NULL, NULL, NULL)){
             HomeToIndustrial = true;
         }
 
         //Checks to see if downtown is immediately connected to home.
-        if(isHubConnected("[DOWNT]", "[ROADS]", "[HOOME]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(DOWNTOWN, ROAD, HOME, NULL, NULL, NULL)){
             DowntownToHome = true;
         }
-        if(isHubConnected("[DOWNT]", "[ELTRN]", "[HOOME]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(DOWNTOWN, ELECTRICTRAIN, HOME, NULL, NULL, NULL)){
             DowntownToHome = true;
         }
-        if(isHubConnected("[DOWNT]", "[GSTRN]", "[HOOME]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(DOWNTOWN, GASTRAIN, HOME, NULL, NULL, NULL)){
             DowntownToHome = true;
         }
-        if(isHubConnected("[DOWNT]", "[ORTRN]", "[HOOME]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(DOWNTOWN, ORBITALTRAIN, HOME, NULL, NULL, NULL)){
             DowntownToHome = true;
         }
-        if(isHubConnected("[DOWNT]", "[BKPTH]", "[HOOME]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(DOWNTOWN, BIKEPATH, HOME, NULL, NULL, NULL)){
             DowntownToHome = true;
         }
 
         //Checks to see if downtown is immediately connected to shopping.
-        if(isHubConnected("[DOWNT]", "[ROADS]", "[SHOPP]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(DOWNTOWN, ROAD, SHOP, NULL, NULL, NULL)){
             DowntownToShopping = true;
         }
-        if(isHubConnected("[DOWNT]", "[ELTRN]", "[SHOPP]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(DOWNTOWN, ELECTRICTRAIN, SHOP, NULL, NULL, NULL)){
             DowntownToShopping = true;
         }
-        if(isHubConnected("[DOWNT]", "[GSTRN]", "[SHOPP]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(DOWNTOWN, GASTRAIN, SHOP, NULL, NULL, NULL)){
             DowntownToShopping = true;
         }
-        if(isHubConnected("[DOWNT]", "[ORTRN]", "[SHOPP]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(DOWNTOWN, ORBITALTRAIN, SHOP, NULL, NULL, NULL)){
             DowntownToShopping = true;
         }
-        if(isHubConnected("[DOWNT]", "[BKPTH]", "[SHOPP]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(DOWNTOWN, BIKEPATH, SHOP, NULL, NULL, NULL)){
             DowntownToShopping = true;
         }
 
         //Checks to see if downtown is immediately connected to farm.
-        if(isHubConnected("[DOWNT]", "[ROADS]", "[FAARM]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(DOWNTOWN, ROAD, FARM, NULL, NULL, NULL)){
             DowntownToFarm = true;
         }
-        if(isHubConnected("[DOWNT]", "[ELTRN]", "[FAARM]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(DOWNTOWN, ELECTRICTRAIN, FARM, NULL, NULL, NULL)){
             DowntownToFarm = true;
         }
-        if(isHubConnected("[DOWNT]", "[GSTRN]", "[FAARM]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(DOWNTOWN, GASTRAIN, FARM, NULL, NULL, NULL)){
             DowntownToFarm = true;
         }
-        if(isHubConnected("[DOWNT]", "[ORTRN]", "[FAARM]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(DOWNTOWN, ORBITALTRAIN, FARM, NULL, NULL, NULL)){
             DowntownToFarm = true;
         }
-        if(isHubConnected("[DOWNT]", "[BKPTH]", "[FAARM]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(DOWNTOWN, BIKEPATH, FARM, NULL, NULL, NULL)){
             DowntownToFarm = true;
         }
 
         //Checks to see if downtown is immediately connected to industry.
-        if(isHubConnected("[DOWNT]", "[ROADS]", "[INDUS]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(DOWNTOWN, ROAD, INDUSTRY, NULL, NULL, NULL)){
             DowntownToIndustrial = true;
         }
-        if(isHubConnected("[DOWNT]", "[ELTRN]", "[INDUS]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(DOWNTOWN, ELECTRICTRAIN, INDUSTRY, NULL, NULL, NULL)){
             DowntownToIndustrial = true;
         }
-        if(isHubConnected("[DOWNT]", "[GSTRN]", "[INDUS]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(DOWNTOWN, GASTRAIN, INDUSTRY, NULL, NULL, NULL)){
             DowntownToIndustrial = true;
         }
-        if(isHubConnected("[DOWNT]", "[ORTRN]", "[INDUS]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(DOWNTOWN, ORBITALTRAIN, INDUSTRY, NULL, NULL, NULL)){
             DowntownToIndustrial = true;
         }
-        if(isHubConnected("[DOWNT]", "[BKPTH]", "[INDUS]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(DOWNTOWN, BIKEPATH, INDUSTRY, NULL, NULL, NULL)){
             DowntownToIndustrial = true;
         }
 
         //Checks to see if shopping is immediately connected to home.
-        if(isHubConnected("[SHOPP]", "[ROADS]", "[HOME]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(SHOP, ROAD, HOME, NULL, NULL, NULL)){
             ShoppingToHome = true;
         }
-        if(isHubConnected("[SHOPP]", "[ELTRN]", "[HOME]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(SHOP, ELECTRICTRAIN, HOME, NULL, NULL, NULL)){
             ShoppingToHome = true;
         }
-        if(isHubConnected("[SHOPP]", "[GSTRN]", "[HOME]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(SHOP, GASTRAIN, HOME, NULL, NULL, NULL)){
             ShoppingToHome = true;
         }
-        if(isHubConnected("[SHOPP]", "[ORTRN]", "[HOME]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(SHOP, ORBITALTRAIN, HOME, NULL, NULL, NULL)){
             ShoppingToHome = true;
         }
-        if(isHubConnected("[SHOPP]", "[BKPTH]", "[HOME]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(SHOP, BIKEPATH, HOME, NULL, NULL, NULL)){
             ShoppingToHome = true;
         }
 
         //Checks to see if shopping is immediately connected to farm.
-        if(isHubConnected("[SHOPP]", "[ROADS]", "[FAARM]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(SHOP, ROAD, FARM, NULL, NULL, NULL)){
             ShoppingToFarm = true;
         }
-        if(isHubConnected("[SHOPP]", "[ELTRN]", "[FAARM]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(SHOP, ELECTRICTRAIN, FARM, NULL, NULL, NULL)){
             ShoppingToFarm = true;
         }
-        if(isHubConnected("[SHOPP]", "[GSTRN]", "[FAARM]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(SHOP, GASTRAIN, FARM, NULL, NULL, NULL)){
             ShoppingToFarm = true;
         }
-        if(isHubConnected("[SHOPP]", "[ORTRN]", "[FAARM]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(SHOP, ORBITALTRAIN, FARM, NULL, NULL, NULL)){
             ShoppingToFarm = true;
         }
-        if(isHubConnected("[SHOPP]", "[BKPTH]", "[FAARM]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(SHOP, BIKEPATH, FARM, NULL, NULL, NULL)){
             ShoppingToFarm = true;
         }
 
         //Checks to see if Shopping is connected to industry.
-        if(isHubConnected("[SHOPP]", "[ROADS]", "[INDUS]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(SHOP, ROAD, INDUSTRY, NULL, NULL, NULL)){
             ShoppingToIndustrial = true;
         }
-        if(isHubConnected("[SHOPP]", "[ELTRN]", "[INDUS]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(SHOP, ELECTRICTRAIN, INDUSTRY, NULL, NULL, NULL)){
             ShoppingToIndustrial = true;
         }
-        if(isHubConnected("[SHOPP]", "[GSTRN]", "[INDUS]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(SHOP, GASTRAIN, INDUSTRY, NULL, NULL, NULL)){
             ShoppingToIndustrial = true;
         }
-        if(isHubConnected("[SHOPP]", "[ORTRN]", "[INDUS]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(SHOP, ORBITALTRAIN, INDUSTRY, NULL, NULL, NULL)){
             ShoppingToIndustrial = true;
         }
-        if(isHubConnected("[SHOPP]", "[BKPTH]", "[INDUS]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(SHOP, BIKEPATH, INDUSTRY, NULL, NULL, NULL)){
             ShoppingToIndustrial = true;
         }
 
         //Checks to see if shopping is connected to Downtown.
-        if(isHubConnected("[SHOPP]", "[ROADS]", "[DOWNT]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(SHOP, ROAD, DOWNTOWN, NULL, NULL, NULL)){
             ShoppingToDowntown = true;
         }
-        if(isHubConnected("[SHOPP]", "[ELTRN]", "[DOWNT]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(SHOP, ELECTRICTRAIN, DOWNTOWN, NULL, NULL, NULL)){
             ShoppingToDowntown = true;
         }
-        if(isHubConnected("[SHOPP]", "[GSTRN]", "[DOWNT]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(SHOP, GASTRAIN, DOWNTOWN, NULL, NULL, NULL)){
             ShoppingToDowntown = true;
         }
-        if(isHubConnected("[SHOPP]", "[ORTRN]", "[DOWNT]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(SHOP, ORBITALTRAIN, DOWNTOWN, NULL, NULL, NULL)){
             ShoppingToDowntown = true;
         }
-        if(isHubConnected("[SHOPP]", "[BKPTH]", "[DOWNT]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(SHOP, BIKEPATH, DOWNTOWN, NULL, NULL, NULL)){
             ShoppingToDowntown = true;
         }
 
         //Checks ot see if farm is connected to downtown.
-        if(isHubConnected("[FAARM]", "[ROADS]", "[DOWNT]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(FARM, ROAD, DOWNTOWN, NULL, NULL, NULL)){
             FarmToDowntown = true;
         }
-        if(isHubConnected("[FAARM]", "[ELTRN]", "[DOWNT]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(FARM, ELECTRICTRAIN, DOWNTOWN, NULL, NULL, NULL)){
             FarmToDowntown = true;
         }
-        if(isHubConnected("[FAARM]", "[GSTRN]", "[DOWNT]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(FARM, GASTRAIN, DOWNTOWN, NULL, NULL, NULL)){
             FarmToDowntown = true;
         }
-        if(isHubConnected("[FAARM]", "[ORTRN]", "[DOWNT]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(FARM, ORBITALTRAIN, DOWNTOWN, NULL, NULL, NULL)){
             FarmToDowntown = true;
         }
-        if(isHubConnected("[FAARM]", "[BKPTH]", "[DOWNT]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(FARM, BIKEPATH, DOWNTOWN, NULL, NULL, NULL)){
             FarmToDowntown = true;
         }
 
         //Checks to see if farm is connected to home.
-        if(isHubConnected("[FAARM]", "[ROADS]", "[HOOME]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(FARM, ROAD, HOME, NULL, NULL, NULL)){
             FarmToHome = true;
         }
-        if(isHubConnected("[FAARM]", "[ELTRN]", "[HOOME]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(FARM, ELECTRICTRAIN, HOME, NULL, NULL, NULL)){
             FarmToHome = true;
         }
-        if(isHubConnected("[FAARM]", "[GSTRN]", "[HOOME]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(FARM, GASTRAIN, HOME, NULL, NULL, NULL)){
             FarmToHome = true;
         }
-        if(isHubConnected("[FAARM]", "[ORTRN]", "[HOOME]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(FARM, ORBITALTRAIN, HOME, NULL, NULL, NULL)){
             FarmToHome = true;
         }
-        if(isHubConnected("[FAARM]", "[BKPTH]", "[HOOME]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(FARM, BIKEPATH, HOME, NULL, NULL, NULL)){
             FarmToHome = true;
         }
 
         //Checks to see if farm is connected to shopping.
-        if(isHubConnected("[FAARM]", "[ROADS]", "[SHOPP]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(FARM, ROAD, SHOP, NULL, NULL, NULL)){
             FarmToShopping = true;
         }
-        if(isHubConnected("[FAARM]", "[ELTRN]", "[SHOPP]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(FARM, ELECTRICTRAIN, SHOP, NULL, NULL, NULL)){
             FarmToShopping = true;
         }
-        if(isHubConnected("[FAARM]", "[GSTRN]", "[SHOPP]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(FARM, GASTRAIN, SHOP, NULL, NULL, NULL)){
             FarmToShopping = true;
         }
-        if(isHubConnected("[FAARM]", "[ORTRN]", "[SHOPP]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(FARM, ORBITALTRAIN, SHOP, NULL, NULL, NULL)){
             FarmToShopping = true;
         }
-        if(isHubConnected("[FAARM]", "[BKPTH]", "[SHOPP]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(FARM, BIKEPATH, SHOP, NULL, NULL, NULL)){
             FarmToShopping = true;
         }
 
         //Checks to see if farm is connected to industry.
-        if(isHubConnected("[FAARM]", "[ROADS]", "[INDUS]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(FARM, ROAD, INDUSTRY, NULL, NULL, NULL)){
             FarmToIndustrial = true;
         }
-        if(isHubConnected("[FAARM]", "[ELTRN]", "[INDUS]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(FARM, ELECTRICTRAIN, INDUSTRY, NULL, NULL, NULL)){
             FarmToIndustrial = true;
         }
-        if(isHubConnected("[FAARM]", "[GSTRN]", "[INDUS]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(FARM, GASTRAIN, INDUSTRY, NULL, NULL, NULL)){
             FarmToIndustrial = true;
         }
-        if(isHubConnected("[FAARM]", "[ORTRN]", "[INDUS]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(FARM, ORBITALTRAIN, INDUSTRY, NULL, NULL, NULL)){
             FarmToIndustrial = true;
         }
-        if(isHubConnected("[FAARM]", "[BKPTH]", "[INDUS]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(FARM, BIKEPATH, INDUSTRY, NULL, NULL, NULL)){
             FarmToIndustrial = true;
         }
 
         //Checks ot see if industry is connected to home.
-        if(isHubConnected("[INDUS]", "[ROADS]", "[HOOME]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(INDUSTRY, ROAD, HOME, NULL, NULL, NULL)){
             IndustrialToHome = true;
         }
-        if(isHubConnected("[INDUS]", "[ELTRN]", "[HOOME]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(INDUSTRY, ELECTRICTRAIN, HOME, NULL, NULL, NULL)){
             IndustrialToHome = true;
         }
-        if(isHubConnected("[INDUS]", "[GSTRN]", "[HOOME]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(INDUSTRY, GASTRAIN, HOME, NULL, NULL, NULL)){
             IndustrialToHome = true;
         }
-        if(isHubConnected("[INDUS]", "[ORTRN]", "[HOOME]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(INDUSTRY, ORBITALTRAIN, HOME, NULL, NULL, NULL)){
             IndustrialToHome = true;
         }
-        if(isHubConnected("[INDUS]", "[BKPTH]", "[HOOME]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(INDUSTRY, BIKEPATH, HOME, NULL, NULL, NULL)){
             IndustrialToHome = true;
         }
 
         //Checks to see if industry is connected to shopping.
-        if(isHubConnected("[INDUS]", "[ROADS]", "[SHOPP]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(INDUSTRY, ROAD, SHOP, NULL, NULL, NULL)){
             IndustrialToShopping = true;
         }
-        if(isHubConnected("[INDUS]", "[ELTRN]", "[SHOPP]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(INDUSTRY, ELECTRICTRAIN, SHOP, NULL, NULL, NULL)){
             IndustrialToShopping = true;
         }
-        if(isHubConnected("[INDUS]", "[GSTRN]", "[SHOPP]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(INDUSTRY, GASTRAIN, SHOP, NULL, NULL, NULL)){
             IndustrialToShopping = true;
         }
-        if(isHubConnected("[INDUS]", "[ORTRN]", "[SHOPP]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(INDUSTRY, ORBITALTRAIN, SHOP, NULL, NULL, NULL)){
             IndustrialToShopping = true;
         }
-        if(isHubConnected("[INDUS]", "[BKPTH]", "[SHOPP]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(INDUSTRY, BIKEPATH, SHOP, NULL, NULL, NULL)){
             IndustrialToShopping = true;
         }
 
         //Checks to see if industry is connected to farm.
-        if(isHubConnected("[INDUS]", "[ROADS]", "[FAARM]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(INDUSTRY, ROAD, FARM, NULL, NULL, NULL)){
             IndustrialToFarm = true;
         }
-        if(isHubConnected("[INDUS]", "[ELTRN]", "[FAARM]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(INDUSTRY, ELECTRICTRAIN, FARM, NULL, NULL, NULL)){
             IndustrialToFarm = true;
         }
-        if(isHubConnected("[INDUS]", "[GSTRN]", "[FAARM]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(INDUSTRY, GASTRAIN, FARM, NULL, NULL, NULL)){
             IndustrialToFarm = true;
         }
-        if(isHubConnected("[INDUS]", "[ORTRN]", "[FAARM]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(INDUSTRY, ORBITALTRAIN, FARM, NULL, NULL, NULL)){
             IndustrialToFarm = true;
         }
-        if(isHubConnected("[INDUS]", "[BKPTH]", "[FAARM]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(INDUSTRY, BIKEPATH, FARM, NULL, NULL, NULL)){
             IndustrialToFarm = true;
         }
 
         //Checks to see if industry is connected to downtown.
-        if(isHubConnected("[INDUS]", "[ROADS]", "[DOWNT]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(INDUSTRY, ROAD, DOWNTOWN, NULL, NULL, NULL)){
             IndustrialToDowntown = true;
         }
-        if(isHubConnected("[INDUS]", "[ELTRN]", "[DOWNT]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(INDUSTRY, ELECTRICTRAIN, DOWNTOWN, NULL, NULL, NULL)){
             IndustrialToDowntown = true;
         }
-        if(isHubConnected("[INDUS]", "[GSTRN]", "[DOWNT]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(INDUSTRY, GASTRAIN, DOWNTOWN, NULL, NULL, NULL)){
             IndustrialToDowntown = true;
         }
-        if(isHubConnected("[INDUS]", "[ORTRN]", "[DOWNT]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(INDUSTRY, ORBITALTRAIN, DOWNTOWN, NULL, NULL, NULL)){
             IndustrialToDowntown = true;
         }
-        if(isHubConnected("[INDUS]", "[BKPTH]", "[DOWNT]", "[NULL]", "[NULL]", "[NULL]")){
+        if(isHubConnected(INDUSTRY, BIKEPATH, DOWNTOWN, NULL, NULL, NULL)){
             IndustrialToDowntown = true;
         }
 
